@@ -5,12 +5,8 @@ const WordGetAllService = async ({ queryData = {}, after, before, limit = 10 }) 
     const query = {};
     let sort = { _id: 1 };
 
-    if (queryData.startWith) {
-        query.word = { $regex: "^" + queryData.startWith, $options: "i" }
-    }
-
-    if (queryData.hasLetter) {
-        query.word = { $regex: queryData.hasLetter, $options: "i" };
+    if (queryData.search) {
+        query.word = { $regex: queryData.search, $options: "i" };
     }
 
     if (after) {

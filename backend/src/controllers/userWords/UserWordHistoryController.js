@@ -1,11 +1,12 @@
 const { UserWordHistoryService } = require("../../services/userWords/UserWordHistory");
 
 const UserWordHistoryController = async (req, res) => {
-    const { startWith, hasLetter, favorite, after, before, limit } = req.query;
+    const { search, favorite, after, before, limit } = req.query;
 
     try {
+
         const result = await UserWordHistoryService({
-            queryData: { startWith, hasLetter, favorite },
+            queryData: { search, favorite },
             after,
             before,
             limit: parseInt(limit) || 10,

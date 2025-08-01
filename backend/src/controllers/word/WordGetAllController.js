@@ -1,11 +1,11 @@
 const { WordGetAllService } = require("../../services/word/WordGetAllService");
 
 const WordGetAllController = async (req, res) => {
-    const { startWith, hasLetter, after, before, limit } = req.query;
+    const { search, after, before, limit } = req.query;
 
     try {
         const result = await WordGetAllService({
-            queryData: { startWith, hasLetter },
+            queryData: { search },
             after,
             before,
             limit: parseInt(limit) || 10,

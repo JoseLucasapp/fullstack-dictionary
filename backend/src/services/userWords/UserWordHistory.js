@@ -5,16 +5,12 @@ const UserWordHistoryService = async ({ queryData = {}, after, before, limit = 1
     const query = {};
     let sort = { _id: 1 };
 
-    if (queryData.startWith) {
-        query.word = { $regex: "^" + queryData.startWith, $options: "i" }
-    }
-
-    if (queryData.hasLetter) {
-        query.word = { $regex: queryData.hasLetter, $options: "i" };
+    if (queryData.search) {
+        query.word = { $regex: queryData.search, $options: "i" };
     }
 
     if (queryData.favorite) {
-        query.favorite = favorite === 'true';
+        query.favorite = queryData.favorite === 'true';
     }
 
     if (after) {
