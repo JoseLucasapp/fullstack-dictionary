@@ -20,4 +20,4 @@ const WordCountDocuments = async (query = {}) => {
     return await Word.countDocuments(query);
 }
 
-module.exports = { WordGetAll, WordCountDocuments, WordGetWorld }
+module.exports = { Word, WordGetAll, WordCountDocuments, WordGetWorld }

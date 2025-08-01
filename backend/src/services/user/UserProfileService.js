@@ -1,10 +1,10 @@
-const { getUser } = require("../../models/userModel")
+const { UserGet } = require("../../models/userModel")
 
 const UserProfileService = async (query) => {
-    const user = await getUser(query);
+    const user = await UserGet(query);
 
     if (!user) {
-        throw new Error("User not found");
+        return new Error("User not found");
     }
 
     return user;

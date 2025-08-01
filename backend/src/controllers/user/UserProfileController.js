@@ -2,7 +2,7 @@ const { UserProfileService } = require("../../services/user/UserProfileService")
 
 const UserProfileController = async (req, res) => {
     try {
-        const userProfile = await UserProfileService({ _id: req.params.id });
+        const userProfile = await UserProfileService({ _id: req.user.id });
         if (!userProfile) {
             return res.status(404).json({
                 message: userProfile.message

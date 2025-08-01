@@ -1,34 +1,23 @@
 const { verifyToken } = require('../helpers/jwt');
 
-module.exports = async (req, res, next) => {
+module.exports = (req, res, next) => {
     const { authorization } = req.headers;
 
-    if (!authorization) {
+    if (!authorization || !authorization.startsWith("Bearer ")) {
         return res.status(401).json({
-            data: {
-                error: {},
-                status: "Invalid token",
-            },
+            message: "Token ausente ou mal formatado",
         });
     }
 
     try {
-        const user = verifyToken(authorization);
-        if (!user) {
-            return res.status(401).json({
-                data: {
-                    error: {},
-                    status: "Invalid token",
-                },
-            });
-        }
+        const token = authorization.split(" ")[1];
+        const user = verifyToken(token);
 
         req.user = user;
         next();
     } catch (err) {
-        res.status(500).send({
-            data: err,
-            status: "Error"
-        })
+        return res.status(401).json({
+            message: "Token inválido ou expirado",
+        });
     }
-}
+};

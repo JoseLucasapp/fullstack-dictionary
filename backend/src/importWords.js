@@ -2,12 +2,9 @@ require('dotenv').config()
 const fs = require("fs");
 const readline = require("readline");
 const mongoose = require("mongoose");
-const Word = require("./models/Word");
+const { Word } = require("./models/wordModel");
 
-mongoose.connect(process.env.MONGO_DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
+mongoose.connect(process.env.MONGO_DB_URI).then(() => {
     console.log("Conectado ao MongoDB");
     importWords("./english.txt");
 }).catch(err => {

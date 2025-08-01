@@ -1,5 +1,5 @@
 const { createHashedPassword } = require("../../helpers/utils");
-const { getUser } = require("../../models/userModel");
+const { UserGet } = require("../../models/userModel");
 const { generateToken } = require("../../helpers/jwt")
 
 const userLoginService = async (data) => {
@@ -10,10 +10,10 @@ const userLoginService = async (data) => {
 
     const pass = createHashedPassword(data.password);
 
-    const user = await getUser({ email: data.email, password: pass });
+    const user = await UserGet({ email: data.email, password: pass });
 
     if (!user) {
-        const userByEmail = await getUser({ email: data.email });
+        const userByEmail = await UserGet({ email: data.email });
         if (userByEmail) {
             throw new Error("Incorrect password.");
         }
@@ -22,7 +22,7 @@ const userLoginService = async (data) => {
     }
 
     const token = generateToken({
-        _id: user._id,
+        id: user._id,
         email: user.email,
     });
 
