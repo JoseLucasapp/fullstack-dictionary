@@ -1,0 +1,28 @@
+.wordlist-container {
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #fff;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.word-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.word-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 20%;
+}
+
+.word-table td span {
+    width: 100%;
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+}

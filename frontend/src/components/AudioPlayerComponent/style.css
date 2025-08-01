@@ -1,0 +1,37 @@
+.audio-player {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    width: 100%;
+}
+
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid #a3ddff;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 94%;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #a3ddff;
+    transition: width 0.2s ease-in-out;
+}

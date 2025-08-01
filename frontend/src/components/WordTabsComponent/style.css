@@ -1,0 +1,21 @@
+.tabs-container {
+    width: 100%;
+}
+
+.tabs-header {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.tabs-header button {
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    margin-right: 4px;
+    font-weight: bold;
+}
+
+.tabs-header button.active {
+    background-color: #eee;
+}
