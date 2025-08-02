@@ -4,14 +4,15 @@ const { UserWordVisitedService } = require("../../services/userWords/UserWordVis
 
 const WordGetController = async (req, res) => {
     const { word } = req.params;
+    const userId = req.user.id;
 
     try {
         const result = await ApiGetWordService(word);
 
-        const wordExists = await UserWordGetService(word);
+        const wordExists = await UserWordGetService(word, userId);
 
         if (!wordExists) {
-            await UserWordVisitedService(word);
+            await UserWordVisitedService(word, userId);
         }
 
         res.status(200).json(result);

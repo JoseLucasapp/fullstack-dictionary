@@ -40,3 +40,13 @@ export const apiLogin = async (data: LoginPayload): Promise<LoginResponse> => {
         throw error;
     }
 };
+
+export interface UserProfile {
+    name: string;
+    email: string;
+}
+
+export const apiGetUserInfo = async (): Promise<UserProfile> => {
+    const response = await api.get<UserProfile>("/user/me");
+    return response.data;
+};

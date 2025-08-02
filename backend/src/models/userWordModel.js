@@ -1,26 +1,33 @@
 const mongoose = require("mongoose");
 
 const UserWordSchema = new mongoose.Schema({
-    word: { type: String, unique: true, required: true },
-    favorite: { type: Boolean, default: false }
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    word: { type: String, required: true },
+    favorite: { type: Boolean, default: false },
 }, {
     timestamps: true,
 });
 
+UserWordSchema.index({ userId: 1, word: 1 }, { unique: true });
+
 const UserWord = mongoose.model("userWords", UserWordSchema);
 
-const UserWorldVisited = async (data) => {
-    const word = new UserWord(data);
-    return await word.save();
-}
+
+const UserWorldVisited = async ({ word, userId }) => {
+    return await UserWord.findOneAndUpdate(
+        { word, userId },
+        { word, userId },
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+    );
+};
 
 const UserWordFindOne = async (query = {}) => {
     return await UserWord.findOne(query)
 }
 
-const UserWordMarkAsFavorite = async (id) => {
-    return await UserWord.findByIdAndUpdate(
-        id,
+const UserWordMarkAsFavorite = async (word, userId) => {
+    return await UserWord.findOneAndUpdate(
+        { word, userId },
         [{ $set: { favorite: { $not: "$favorite" } } }],
         {
             new: true,

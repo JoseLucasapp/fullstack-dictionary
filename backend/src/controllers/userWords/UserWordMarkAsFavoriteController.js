@@ -2,9 +2,11 @@ const { UserWordGetService } = require("../../services/userWords/UserWordGetServ
 const { UserWordMarkAsFavoriteService } = require("../../services/userWords/UserWordMarkAsFavoriteService");
 
 const UserWordMarkAsFavoriteController = async (req, res) => {
+    const { word } = req.params;
+    const userId = req.user.id;
+
     try {
-        const word = await UserWordGetService(req.params.word);
-        await UserWordMarkAsFavoriteService(word._id);
+        await UserWordMarkAsFavoriteService(word, userId);
 
         res.status(204).json({})
 

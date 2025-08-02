@@ -1,7 +1,7 @@
-const { UserWorldVisited } = require("../../models/userWordModel")
+const { UserWorldVisited } = require("../../models/userWordModel");
 
-const UserWordVisitedService = async (word) => {
-    return await UserWorldVisited({ word: word });
-}
+const UserWordVisitedService = async (word, userId) => {
+    return await UserWorldVisited({ word, userId });
+};
 
-module.exports = { UserWordVisitedService }
+module.exports = { UserWordVisitedService };

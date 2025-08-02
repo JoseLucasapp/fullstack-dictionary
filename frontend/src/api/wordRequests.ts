@@ -27,18 +27,29 @@ export const apiFetchWords = async ({
 }: FetchWordsParams): Promise<FetchWordsResponse> => {
     try {
         const response = await api.get<FetchWordsResponse>("entries/en", {
-            params: {
-                search,
-                limit,
-                after,
-            },
+            params: { search, limit, after },
         });
-
         return response.data;
     } catch (error) {
         throw error;
     }
 };
+
+export const apiFetchFavorites = async (after?: string, limit: number = 30): Promise<FetchWordsResponse> => {
+    const res = await api.get<FetchWordsResponse>("/user/me/favorites", {
+        params: { after, limit },
+    });
+    return res.data;
+};
+
+export const apiFetchHistory = async (after?: string, limit: number = 30): Promise<FetchWordsResponse> => {
+    const res = await api.get<FetchWordsResponse>("/user/me/history", {
+        params: { after, limit },
+    });
+    return res.data;
+};
+
+
 
 export interface WordDetailsResponse {
     word: string;
@@ -58,6 +69,35 @@ export interface WordDetailsResponse {
 
 export const apiGetWordDetails = async (word: string): Promise<WordDetailsResponse[]> => {
     const response = await api.get(`/entries/en/${word}`);
-    console.log(response.data);
     return response.data;
 };
+
+
+export const apiAddToFavorites = async (word: string): Promise<void> => {
+    try {
+        await api.post(`/entries/en/${encodeURIComponent(word)}/favorite`);
+    } catch (error) {
+        throw error;
+    }
+};
+
+
+export const apiRemoveFromFavorites = async (word: string): Promise<void> => {
+    try {
+        await api.post(`/entries/en/${encodeURIComponent(word)}/unfavorite`);
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const apiIsFavorite = async (word: string): Promise<boolean> => {
+    try {
+        const res = await api.get(`/entries/en/${encodeURIComponent(word)}/isFavorite`);
+
+        console.log(res.data.result, word)
+        return res.data?.result === true;
+    } catch (error) {
+        return false;
+    }
+};
+

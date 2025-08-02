@@ -5,6 +5,7 @@
 .tabs-header {
     display: flex;
     margin-bottom: 10px;
+    justify-content: space-between;
 }
 
 .tabs-header button {
@@ -18,4 +19,43 @@
 
 .tabs-header button.active {
     background-color: #eee;
+}
+
+.tabs-header input {
+    width: 25%;
+    color: #ffffff;
+    border: transparent;
+    padding: 1%;
+    font-size: 16px;
+    height: 40px;
+
+}
+
+.tabs-header input::placeholder {
+    color: #fff
+}
+
+@media (max-width: 912px) {
+    .tabs-container {
+
+        margin-top: 5%;
+    }
+
+    .tabs-header {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .tabs-header input {
+        width: 50%;
+        color: #ffffff;
+        border: transparent;
+        padding: 1%;
+        font-size: 16px;
+        height: 30px;
+        margin-top: 5%;
+        margin-bottom: 5%;
+
+    }
 }

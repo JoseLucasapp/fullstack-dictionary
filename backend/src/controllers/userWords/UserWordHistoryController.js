@@ -2,6 +2,7 @@ const { UserWordHistoryService } = require("../../services/userWords/UserWordHis
 
 const UserWordHistoryController = async (req, res) => {
     const { search, favorite, after, before, limit } = req.query;
+    const userId = req.user.id;
 
     try {
 
@@ -10,6 +11,7 @@ const UserWordHistoryController = async (req, res) => {
             after,
             before,
             limit: parseInt(limit) || 10,
+            userId,
         });
 
         res.status(200).json(result);

@@ -29,8 +29,8 @@ const LoginPage = () => {
             navigate("/home");
 
         } catch (error) {
-            console.error("Erro ao fazer login:", error);
-            alert("Email ou senha inválidos.");
+            console.error("Error trying to login:", error);
+            alert("Email or password incorrect.");
         }
     };
 
@@ -48,8 +48,8 @@ const LoginPage = () => {
             navigate("/home");
 
         } catch (error: any) {
-            console.error("Erro ao criar conta:", error);
-            alert("Erro ao criar conta. Tente novamente.");
+            console.error("Error trying to create an account:", error);
+            alert("Error trying to create an account. Try again.");
         }
     };
 
@@ -65,12 +65,12 @@ const LoginPage = () => {
     return (
         <section className="login-page">
             <section className="login-component">
-                <section className="left-section">
+                <section className="left-section-login">
                     <img src="/icon.png" alt="A book with a mouse, the logo." />
                     <p>Fullstack dictionary</p>
                 </section>
 
-                <section className="right-section">
+                <section className="right-section-login">
                     {
                         isLogin ? (
                             <div className="section-content">
@@ -83,7 +83,7 @@ const LoginPage = () => {
                                 }
 
                                 {
-                                    renderFormGroup("password", "password", "Senha", password, setPassword)
+                                    renderFormGroup("password", "password", "Password", password, setPassword)
                                 }
 
                                 <div className="form-group">
@@ -91,17 +91,17 @@ const LoginPage = () => {
                                 </div>
 
                                 <div className="form-group">
-                                    <p className="link" onClick={handleIsLogin}>Não tenho conta, cadastrar</p>
+                                    <p className="link" onClick={handleIsLogin}>Create account</p>
                                 </div>
                             </div>
                         ) : (
                             <div className="section-content">
                                 <div className="form-group">
-                                    <p className="title">Criar conta</p>
+                                    <p className="title">Create Account</p>
                                 </div>
 
                                 {
-                                    renderFormGroup("name", "name", "Nome", name, setName)
+                                    renderFormGroup("name", "name", "Name", name, setName)
                                 }
 
                                 {
@@ -109,15 +109,15 @@ const LoginPage = () => {
                                 }
 
                                 {
-                                    renderFormGroup("password", "password", "Senha", password, setPassword)
+                                    renderFormGroup("password", "password", "Password", password, setPassword)
                                 }
 
                                 <div className="form-group">
-                                    <button onClick={handleCreateAccount}>Criar conta</button>
+                                    <button onClick={handleCreateAccount}>Create Account</button>
                                 </div>
 
                                 <div className="form-group">
-                                    <p className="link" onClick={handleIsLogin}>Já tenho conta, fazer login</p>
+                                    <p className="link" onClick={handleIsLogin}>Login</p>
                                 </div>
                             </div>
                         )

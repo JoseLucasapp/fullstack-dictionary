@@ -1,7 +1,7 @@
-const { UserWordFindOne } = require("../../models/userWordModel")
+const { UserWordFindOne } = require("../../models/userWordModel");
 
-const UserWordGetService = async (word) => {
-    return await UserWordFindOne({ word: word });
-}
+const UserWordGetService = async ({ word, userId }) => {
+    return await UserWordFindOne({ word, userId });
+};
 
-module.exports = { UserWordGetService }
+module.exports = { UserWordGetService };
