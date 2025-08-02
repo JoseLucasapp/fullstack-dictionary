@@ -94,7 +94,6 @@ export const apiIsFavorite = async (word: string): Promise<boolean> => {
     try {
         const res = await api.get(`/entries/en/${encodeURIComponent(word)}/isFavorite`);
 
-        console.log(res.data.result, word)
         return res.data?.result === true;
     } catch (error) {
         return false;

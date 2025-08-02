@@ -42,8 +42,6 @@ const LoginPage = () => {
                 password,
             });
 
-            console.log(res)
-
             login(res.data.token);
             navigate("/home");
 
