@@ -3,6 +3,7 @@ import "./style.css";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { apiCreateAccount, apiLogin } from "../../api/userRequests";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -30,7 +31,7 @@ const LoginPage = () => {
 
         } catch (error) {
             console.error("Error trying to login:", error);
-            alert("Email or password incorrect.");
+            Swal.fire("Error!", "Email or password incorrect", "error");
         }
     };
 
@@ -47,7 +48,7 @@ const LoginPage = () => {
 
         } catch (error: any) {
             console.error("Error trying to create an account:", error);
-            alert("Error trying to create an account. Try again.");
+            Swal.fire("Error!", "Error trying to create acount", "error");
         }
     };
 

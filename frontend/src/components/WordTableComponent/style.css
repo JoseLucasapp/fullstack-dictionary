@@ -4,11 +4,13 @@
     border: 1px solid #fff;
     padding: 10px;
     overflow-x: hidden;
+    width: 100%;
 }
 
 .scroll-area {
     height: 100%;
     overflow-y: auto;
+    width: 100%;
 }
 
 .word-table {
@@ -30,4 +32,10 @@
     text-decoration: none;
     cursor: pointer;
     display: flex;
+}
+
+@media (max-width: 912px) {
+    .wordlist-container {
+        width: 91%;
+    }
 }
