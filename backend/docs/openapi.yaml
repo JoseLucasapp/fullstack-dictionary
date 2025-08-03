@@ -1,0 +1,156 @@
+openapi: 3.0.0
+info:
+  title: Fullstack test
+  version: 1.0.0
+servers:
+  - url: undefined://{{api_url}}auth
+  - url: undefined://{{api_url}}user
+  - url: undefined://{{api_url}}entries
+  - url: undefined://{{api_url}}
+tags:
+  - name: user
+  - name: words
+paths:
+  /signup:
+    post:
+      tags:
+        - user
+      summary: Create account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Lucas
+                email: josluc2016@gmail.com
+                password: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /signin:
+    post:
+      tags:
+        - user
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Lucas
+                email: josluc2016@gmail.com
+                password: '123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /me:
+    get:
+      tags:
+        - user
+      summary: profile
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /me/history:
+    get:
+      tags:
+        - user
+      summary: history
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /me/favorites:
+    get:
+      tags:
+        - user
+      summary: favorites
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /en/:word/isFavorite:
+    get:
+      tags:
+        - words
+      summary: is favorite
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /en/:word/favorite:
+    post:
+      tags:
+        - words
+      summary: favorite
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /en/:word/unfavorite:
+    post:
+      tags:
+        - words
+      summary: unfavorite
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /en:
+    get:
+      tags:
+        - words
+      summary: All words
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+          example: fire
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '4'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /en/sky:
+    get:
+      tags:
+        - words
+      summary: word details
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /:
+    get:
+      tags:
+        - default
+      summary: Home
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
