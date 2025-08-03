@@ -1,4 +1,4 @@
-const { UserGet } = require("../../models/UserModel")
+const { UserGet } = require("../../models/userModel")
 
 const UserProfileService = async (query) => {
     const user = await UserGet(query);

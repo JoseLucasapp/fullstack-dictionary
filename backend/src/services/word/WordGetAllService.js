@@ -1,5 +1,5 @@
 const { decodeCursor, encodeCursor } = require("../../helpers/utils");
-const { WordGetAll, WordCountDocuments, WordGetWorld } = require("../../models/WordModel");
+const { WordGetAll, WordCountDocuments, WordGetWorld } = require("../../models/wordModel");
 
 const WordGetAllService = async ({ queryData = {}, after, before, limit = 10 }) => {
     const query = {};

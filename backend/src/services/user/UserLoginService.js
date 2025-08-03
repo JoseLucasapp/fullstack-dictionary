@@ -1,5 +1,5 @@
 const { createHashedPassword } = require("../../helpers/utils");
-const { UserGet } = require("../../models/UserModel");
+const { UserGet } = require("../../models/userModel");
 const { generateToken } = require("../../helpers/jwt")
 
 const UserLoginService = async (data) => {

@@ -2,7 +2,7 @@ require('dotenv').config()
 const fs = require("fs");
 const readline = require("readline");
 const mongoose = require("mongoose");
-const { Word } = require("./models/WordModel");
+const { Word } = require("./models/wordModel");
 
 mongoose.connect(process.env.MONGO_DB_URI).then(() => {
     console.log("Conectado ao MongoDB");

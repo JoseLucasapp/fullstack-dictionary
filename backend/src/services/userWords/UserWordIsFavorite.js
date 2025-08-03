@@ -1,4 +1,4 @@
-const { UserWordFindOne } = require("../../models/UserWordModel")
+const { UserWordFindOne } = require("../../models/userWordModel")
 
 const UserWordIsFavoriteService = async (word, userId) => {
     const wordData = await UserWordFindOne({ word: word, favorite: true, userId });

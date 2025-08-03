@@ -1,5 +1,6 @@
-const { UserCreate } = require("../../models/UserModel")
-const { createHashedPassword } = require("../../helpers/utils")
+
+const { createHashedPassword } = require("../../helpers/utils");
+const { UserCreate } = require("../../models/userModel");
 
 const UserCreateAccountService = async (data) => {
     const hashedPass = createHashedPassword(data.password);
