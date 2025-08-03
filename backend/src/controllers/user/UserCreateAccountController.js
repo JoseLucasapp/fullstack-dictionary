@@ -1,5 +1,5 @@
 const { UserCreateAccountService } = require("../../services/user/UserCreateAccountService");
-const { userLoginService } = require("../../services/user/userLoginService");
+const { UserLoginService } = require("../../services/user/UserLoginService");
 const { UserProfileService } = require("../../services/user/UserProfileService")
 
 const UserCreateAccountController = async (req, res) => {
@@ -10,7 +10,7 @@ const UserCreateAccountController = async (req, res) => {
         if (userExists.message && userExists.message === "User not found") {
             await UserCreateAccountService({ name: name, email: email, password: password });
 
-            const userLogin = await userLoginService({ email: email, password: password })
+            const userLogin = await UserLoginService({ email: email, password: password })
 
             return res.status(200).json(userLogin);
         }
