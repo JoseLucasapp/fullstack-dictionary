@@ -1,5 +1,5 @@
 const { decodeCursor, encodeCursor } = require("../../helpers/utils");
-const { UserWordHistory, UserWordCountDocuments, UserWordFindOne } = require("../../models/userWordModel");
+const { UserWordHistory, UserWordCountDocuments, UserWordFindOne } = require("../../models/UserWordModel");
 
 const UserWordHistoryService = async ({ queryData = {}, after, before, limit = 10, userId }) => {
     const query = {

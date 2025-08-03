@@ -1,8 +1,8 @@
 const { createHashedPassword } = require("../../helpers/utils");
-const { UserGet } = require("../../models/userModel");
+const { UserGet } = require("../../models/UserModel");
 const { generateToken } = require("../../helpers/jwt")
 
-const userLoginService = async (data) => {
+const UserLoginService = async (data) => {
 
     if (!data.email || !data.password) {
         throw new Error("Email and password are required.");
@@ -33,4 +33,4 @@ const userLoginService = async (data) => {
     }
 }
 
-module.exports = { userLoginService }
+module.exports = { UserLoginService }
