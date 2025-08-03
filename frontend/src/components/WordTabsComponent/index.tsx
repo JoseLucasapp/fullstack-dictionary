@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WordTable from "../WordTableComponent/index";
 import "./style.css";
+import { useSearchParams } from "react-router-dom";
 
 const WordTabs = ({ onSelectWord }: { onSelectWord: (word: string) => void }) => {
     const [activeTab, setActiveTab] = useState<"list" | "favorites" | "history">("list");
-    const [search, setSearch] = useState("");
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [search, setSearch] = useState(searchParams.get("q") || "");
 
-    const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setSearch(value);
+        setSearchParams({ q: value });
     };
+
+    useEffect(() => {
+        const query = searchParams.get("q") || "";
+        setSearch(query);
+    }, [searchParams]);
 
     const handleTabChange = (tab: "list" | "favorites" | "history") => {
         setActiveTab(tab);
@@ -30,7 +39,7 @@ const WordTabs = ({ onSelectWord }: { onSelectWord: (word: string) => void }) =>
                             type="text"
                             placeholder="Search word..."
                             value={search}
-                            onChange={handleSearchInputChange}
+                            onChange={handleSearchChange}
                         />
                     </>
                 )}
