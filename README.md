@@ -4,6 +4,10 @@ A personal dictionary where users can search words, mark them as favorites and v
 
 You can access the project running on production here: <a href="https://fullstack-dictionary-kappa.vercel.app/">Fullstack dictionary</a>
 
+## Result
+
+<img src="./avaliação.png" width="700"  />
+
 ## 🚀 Technologies Used
 
 - **Frontend**
